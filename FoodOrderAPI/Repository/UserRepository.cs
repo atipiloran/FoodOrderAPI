@@ -4,11 +4,9 @@ using FoodOrderAPI.Models;
 using FoodOrderAPI.Models.Dto;
 using FoodOrderAPI.Repository.Interface;
 using Microsoft.IdentityModel.Tokens;
-using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FoodOrderAPI.Repository
 {
@@ -31,8 +29,8 @@ namespace FoodOrderAPI.Repository
         public async Task<LoginResponseDTO> Login(LoginRequestDTO loginRequestDTO)
         {
             var user = _db.Users.FirstOrDefault(u =>
-                u.UserName.ToLower() == loginRequestDTO.userName.ToLower() &&
-                u.Password.ToLower() == loginRequestDTO.password.ToLower()
+                u.UserName.ToLower() == loginRequestDTO.UserName.ToLower() &&
+                u.Password.ToLower() == loginRequestDTO.Password.ToLower()
             );
 
             if (user == null)
