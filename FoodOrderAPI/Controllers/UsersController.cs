@@ -1,5 +1,6 @@
 ﻿using FoodOrderAPI.Models.Dto;
 using FoodOrderAPI.Repository.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Any;
@@ -54,6 +55,7 @@ namespace FoodOrderAPI.Controllers
 
         // POST: api/auth/check
         [HttpPost("check")]
+        [AllowAnonymous] // Allow unauthenticated access to this action
         public async Task<ActionResult<AnyType>> Check()
         {
             try

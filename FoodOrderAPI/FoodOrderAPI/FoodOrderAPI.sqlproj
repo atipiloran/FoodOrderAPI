@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build">
+  <Sdk Name="Microsoft.Build.Sql" Version="0.1.9-preview" />
+  <PropertyGroup>
+    <Name>FoodOrderAPI</Name>
+    <ProjectGuid>{230073B6-1FB6-4DC0-9A6D-8B96081EDF2B}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <ModelCollation>1033, CI</ModelCollation>
+  </PropertyGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\160\SqlSchemas\master.dacpac" Condition="'$(NetCoreBuild)' != 'true'">
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>ApplicationDbContext</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+    <ArtifactReference Include="$(SystemDacpacsLocation)\SystemDacpacs\160\master.dacpac" Condition="'$(NetCoreBuild)' == 'true'">
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>ApplicationDbContext</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+  <Target Name="BeforeBuild">
+    <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
+  </Target>
+</Project>

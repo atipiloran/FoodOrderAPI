@@ -1,6 +1,7 @@
 ﻿using FoodOrderAPI.Data;
 using FoodOrderAPI.Models;
 using FoodOrderAPI.Models.Dto;
+using FoodOrderAPI.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +14,12 @@ namespace FoodOrderAPI.Controllers
     public class ItemsController : ControllerBase
     {
         private readonly ApplicationDbContext _db;
+        private readonly IItemRepository _itemRepository;
 
+        public ItemsController(IItemRepository itemRepository)
+        {
+            _itemRepository = itemRepository;
+        }
         // Constructor
         public ItemsController(ApplicationDbContext db)
         {

@@ -2,6 +2,7 @@
 using FoodOrderAPI.Models;
 using FoodOrderAPI.Models.Dto;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Any;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace FoodOrderAPI.Controllers
 {
@@ -278,5 +280,6 @@ namespace FoodOrderAPI.Controllers
 
             return NoContent();
         }
+
     }
 }
